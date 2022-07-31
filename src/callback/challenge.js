@@ -1,7 +1,7 @@
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const API = 'https://api.escuelajs.co/api/v1';
 
-const fetchData = (urlAPI, callback) =>{
+const fetchData = (urlAPI, callback) => {
     let xhttp = new XMLHttpRequest();
 
     xhttp.open('GET', urlAPI, true);
@@ -19,8 +19,8 @@ const fetchData = (urlAPI, callback) =>{
                 return callback(error, null);
             }
         } 
-        xhttp.send();
     };
+    xhttp.send();
 };
 
 fetchData(`${API}/products`, function (error1, data1){
@@ -37,7 +37,7 @@ fetchData(`${API}/products`, function (error1, data1){
             }
             console.log(data1[0]);
             console.log(data2.title);
-            console.log(data3.name);
+            console.log(data3.image);
         });
     });
 });
