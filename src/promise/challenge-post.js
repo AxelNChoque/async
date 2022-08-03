@@ -2,8 +2,8 @@ import fetch from 'node-fetch';
 
 const API = 'https://api.escuelajs.co/api/v1';
 
-const postData = (urlAPI, data) => {
-    const response = fetch(urlAPI, {
+const postData = async (urlAPI, data) => {
+    const response = await fetch(urlAPI, {
         method: 'POST',
         mode: 'cors',
         credentials: 'same-origin',
@@ -16,13 +16,23 @@ const postData = (urlAPI, data) => {
 }
 
 const data = {
-    "title": "Bed",
-    "price": 10152,
-    "description": "A description",
+    "id": 0,
+    "title": "Ropero",
+    "price": 15000,
+    "description": "La inflacion ta cara",
     "categoryId": 1,
     "images": ["https://placeimg.com/640/480/any"]
-  }
+};
 
-postData(`${API}/products`,data)
-.then(response => response.json())
-.then(data => console.log(data));
+
+
+const asyncFunction = async (urlAPI, data) => {
+    try{
+        const daton = await postData(`${urlAPI}/products`,data);
+        console.log(daton);
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+asyncFunction(`${API}`, data);
